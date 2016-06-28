@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+	<head>
+		<title>myVideos---By AInoob~~~</title>
+		<style>
+	body{
+		background-color: #93CD41;
+	}
+	.logo{
+		float: left;
+		width: 150px;
+		height: 72px;
+	}
+	
+
+	#newCommentsBlock::-webkit-scrollbar-track
+	{
+		background-color: #73AD21;
+		border-radius: 10px;
+	}
+
+	#newCommentsBlock::-webkit-scrollbar
+	{
+		width: 10px;
+		background-color: #73AD21;
+	}
+
+	#newCommentsBlock::-webkit-scrollbar-thumb
+	{
+		border-radius: 5px;
+		background-image:  linear-gradient(to right, yellow , #133D06);
+	}
+	.clickBlock{
+		background-color: #337D01;
+		font-size: 20px;
+		color: white;
+		height: 30px;
+		border-radius: 11px;
+		border: 2px solid #73AD21;
+	}
+	.fullWidthPlus{
+		width: 320px;
+	}
+	.fullWidth{
+		width: 280px;
+	}
+	.halfWidth{
+		width: 140px;
+	}
+	.floatLeft{
+		float: left;
+	}
+	.imageBlock{
+		background-color: #C3EDA1;
+		width: 280px;
+		height: 72px;
+		border-radius: 11px;
+		border: 2px solid #538D01;
+		margin-top: -2px;
+	}
+	.trendGraph{
+		background-color: #C3EDA1;
+		width: 320px;
+		height: 180px;
+		border-radius: 11px;
+		border: 2px solid #538D01;
+		margin-top: -2px;
+	}
+	.dygraph-legend {
+		background:  rgba(150, 150, 200, 0.3) !important;
+	}
+	.infoBlock{
+		font-size: 18px;
+		margin-left: 4px;
+		margin-top: 8px;
+		width: 126px;
+		height:60px;
+		float: left;
+	}
+	.infoDisplay{
+		display: block;
+		line-height: 0%;
+		height: 18px;
+	}
+	#total{
+		margin-left:10px;
+		font-size: 60px;
+		font-family: impact;
+	}
+	img{
+		width: 100%;
+	}
+	.warning{
+		font-size: 30px;
+		color:	#FF0000;
+	}
+	.loader {
+		position: absolute;
+		pointer-events: none;
+		opacity: 0.5;
+		border-radius: 50%;
+		-webkit-animation: spin 2s linear infinite;
+		animation: spin 2s linear infinite;
+	}
+	.loading4{
+		border-top: 16px solid red;
+		width: 200px;
+		height: 200px;
+		margin-top: 120px;
+		margin-left: 42px;
+	}
+	.loading3{
+		border-right: 12px solid yellow;
+		width: 150px;
+		height: 150px;
+		margin-top: 145px;
+		margin-left: 67px;
+	}
+	.loading2{
+		border-bottom: 8px solid blue;
+		width: 100px;
+		height: 100px;
+		margin-top: 170px;
+		margin-left: 92px;
+	}
+	.loading1{
+		border-left: 4px solid green;
+		width: 50px;
+		height: 50px;
+		margin-top: 195px;
+		margin-left: 117px;
+	}
+
+	@-webkit-keyframes spin {
+	  0% { -webkit-transform: rotate(0deg); }
+	  100% { -webkit-transform: rotate(360deg); }
+	}
+	@keyframes spin {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+	#mainBlock{
+		float:left;
+		width:288px;
+	}
+	#newCommentsBlock{
+		float:left;
+		width:140px;
+		overflow-y:auto;
+		height: 500px;
+	}
+	#trendGraphBlock{
+		float:left;
+		width:330px;
+	}
+	.commentImage{
+		width:93%;
+	}
+	.commentIcon{
+		width: 16px;
+	}
+		</style>
+		<script src="thirdParty/jquery.min.js"></script>
+		<script src="thirdParty/dygraph.js"></script>
+		<script src="js/popup.js"></script>
+	</head>
+	<body>
+	<div id="newCommentsBlock" class="scrollbar">
+	</div>
+	<div id="trendGraphBlock">
+		<select id="graphType" class="clickBlock fullWidthPlus">
+			<option value="views">Views</option>
+			<option value="comments">Comments</option>
+			<option value="viewsNew">New Views</option>
+			<option value="viewsGone">Gone Views</option>
+			<option value="commentsNew">New Comments</option>
+			<option value="commentsGone">Gone Comments</option>
+		</select>
+		<div id="totalTrendGraph" class="trendGraph"></div>
+		<div id="subTrendGraph" class="trendGraph"></div>
+	</div>
+	<div id="mainBlock">
+		<div class="loader loading1"></div>
+		<div class="loader loading2"></div>
+		<div class="loader loading3"></div>
+		<div class="loader loading4"></div>
+		<button id="readAll" class="clickBlock fullWidth">Mark all as read</button>
+		<div class="imageBlock" id="total_block">
+			<div class="logo"><div id="total">Total</div></div>
+			<div class="infoBlock">
+				<div id="totalViewText" class="infoDisplay">views</div>
+				<div id="totalViews" class="infoDisplay"></div>
+				<div id="totalCommentsText" class="infoDisplay">comments</div>
+				<div id="totalComments" class="infoDisplay"></div>
+			</div>
+		</div>
+		<div class="imageBlock" id="youtube_block" style="display:none">
+			<a href="https://www.youtube.com/dashboard?o=U" target="_blank">
+				<img class="logo" src="thirdParty/youtube.png">
+			</a>
+			<div class="infoBlock">
+				<div id="youtubeViewsText" class="infoDisplay">views</div>
+				<div id="youtubeViews" class="infoDisplay"></div>
+				<div id="youtubeCommentsText" class="infoDisplay">comments</div>
+				<div id="youtubeComments" class="infoDisplay"></div>
+			</div>
+		</div>
+		<div class="imageBlock" id="youku_block" style="display:none">
+			<a href="http://i.youku.com/u/videos" target="_blank">
+				<img class="logo" src="thirdParty/youku.png">
+			</a>
+			<div class="infoBlock">
+				<div id="youkuViewsText" class="infoDisplay">views</div>
+				<div id="youkuViews" class="infoDisplay"></div>
+				<div id="youkuCommentsText" class="infoDisplay">comments</div>
+				<div id="youkuComments" class="infoDisplay"></div>
+			</div>
+		</div>
+		<div class="imageBlock" id="bilibili_block" style="display:none">
+			<a href="http://member.bilibili.com/#video_manage" target="_blank">
+				<img class="logo" src="thirdParty/bilibili.png">
+			</a>
+			<div class="infoBlock">
+				<div id="bilibiliViewsText" class="infoDisplay">views</div>
+				<div id="bilibiliViews" class="infoDisplay"></div>
+				<div id="bilibiliCommentsText" class="infoDisplay">comments</div>
+				<div id="bilibiliComments" class="infoDisplay"></div>
+			</div>
+		</div>
+		<div class="imageBlock" id="acfun_block" style="display:none">
+			<a href="http://www.acfun.tv/member/#area=post-history" target="_blank">
+				<img class="logo" src="thirdParty/acfun.png">
+			</a>
+			<div class="infoBlock">
+				<div id="acfunViewsText" class="infoDisplay">views</div>
+				<div id="acfunViews" class="infoDisplay"></div>
+				<div id="acfunCommentsText" class="infoDisplay">comments</div>
+				<div id="acfunComments" class="infoDisplay"></div>
+			</div>
+		</div>
+		<button id="update" class="clickBlock halfWidth">Update</button>
+		<button id="reset" class="clickBlock halfWidth">Reset</button><br />
+		<a href="/options.html" target="_blank"><button class="clickBlock fullWidth">Options</button></a>
+	</div>
+	
+  </body>
+</html>

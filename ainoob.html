@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>PPPPP</title>
+    <style>
+	#graph{
+		width: 200px;
+		height: 100px;
+	}
+    </style>
+	<script src="thirdParty/jquery.min.js"></script>
+	<script src="thirdParty/dygraph.js"></script>
+    <script src="js/ainoob.js"></script>
+  </head>
+  <body>
+    <div id="main">
+		<select id="graphType">
+			<option value="views">Views</option>
+			<option value="comments">Comments</option>
+			<option value="viewsNew">New Views</option>
+			<option value="viewsGone">Gone Views</option>
+			<option value="commentsNew">New Comments</option>
+			<option value="commentsGone">Gone Comments</option>
+		</select>
+		<div id="videoList"></div>
+		<div id="trendGraphBlock"></div>
+	</div>
+  </body>
+</html>

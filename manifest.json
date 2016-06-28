@@ -1,0 +1,32 @@
+{
+	"manifest_version": 2,
+	"name": "UP主",
+	"short_name": "UP主",
+	"description": "随时提醒视频的播放和评论的更新~~~",
+	"version": "0.1.1",
+	"browser_action": {
+		"default_icon": {
+			"128": "images/icon128.png" ,
+			"19": "images/icon19.png",
+			"38": "images/icon38.png"
+		},
+		"default_title": "Stoopid~~~",
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts":["thirdParty/jquery.min.js","js/background.js"]
+	},
+	"icons": {
+		"128": "images/icon128.png" 
+	},
+	"options_page": "options.html",
+	"permissions": [
+		"alarms",
+		"unlimitedStorage",
+		"http://*.bilibili.com/",
+		"http://*.youku.com/",
+		"http://*.acfun.tv/",
+		"http://*.aixifan.com/",
+		"https://*.youtube.com/"
+	]
+}
